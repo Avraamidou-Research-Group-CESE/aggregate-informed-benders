@@ -26,8 +26,7 @@ end
 
 # ── Cache paths ───────────────────────────────────────────────────────────────
 
-# const _BENDERS_CACHE_DIR  = joinpath(@__DIR__, "..", "cache")
-const _BENDERS_CACHE_DIR  = joinpath(@__DIR__, "..", "bernard_cache")
+const _BENDERS_CACHE_DIR  = joinpath(@__DIR__, "..", "cache")
 const _BENDERS_CACHE_FILE = joinpath(_BENDERS_CACHE_DIR, "benders_cache.jld2")
 
 # Re-export the monolithic cache file path so wipe_cache! can clear both.

@@ -86,7 +86,7 @@ julia> include("main.jl")
 5. Prints a formatted summary table per `(market, horizon)` block and a final aggregated table.
 6. Writes `results/sweep.csv` with columns: `mkt_type, n_years, method, k_clusters, LB, UB, gap_pct, n_iters, total_time_s`.
 
-**Configurable constants at the top of `main_v2.jl`:**
+**Configurable constants at the top of `main.jl`:**
 
 ```julia
 const HORIZONS   = [10, 20, 40]      # planning horizons to sweep
