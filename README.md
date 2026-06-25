@@ -8,17 +8,17 @@ Kiernan X. Jennings, Styliana Avraamidou, Victor M. Zavala — UW-Madison / Argo
 
 ## Overview
 
-This repository implements a Benders decomposition framework for optimizing the dispatch and stack-replacement schedule of an alkaline water electrolyzer over a multi-year planning horizon. The problem is formulated as a mixed-integer program (MIP) that minimizes net electricity costs subject to hydrogen demand, electrolyzer degradation dynamics, and NPV-based economics driven by ERCOT Day-Ahead Market (DAM) or Real-Time Market (RTM) prices.
+This repository implements a Benders decomposition framework for optimizing the dispatch and stack-replacement schedule of an alkaline water electrolyzer over a multi-year planning horizon. The problem is formulated as a mixed-integer linear program (MILP) that minimizes net electricity costs subject to hydrogen demand, electrolyzer degradation dynamics, and NPV-based economics driven by ERCOT Day-Ahead Market (DAM) or Real-Time Market (RTM) prices.
 
-The key computational challenge is that hourly dispatch decisions (8,760 per year) are tightly coupled across years through the degradation state variable `A[t]`. Benders decomposition exploits this structure by separating the binary replacement decisions (master problem) from the annual dispatch (subproblems).
+The key computational challenge is that operation dispatch decisions are tightly coupled across years through the degradation state variable `A[t]`. Benders decomposition exploits this structure by separating the binary replacement decisions (master problem) from the annual dispatch (subproblems).
 
 Three master-problem variants are implemented and benchmarked:
 
 | Method | Master problem | Description |
 |---|---|---|
 | `traditional` | Binary `z_rep` only | No relaxation of subproblem structure in MP |
-| `k=1` aggregate | Adds annual-aggregate operational variables | Single-cluster (mean-field) relaxation per year |
-| `k`-aggregate | Adds `k`-cluster operational variables | Greedy segmented relaxation of the price curve per year |
+| `k=1` aggregate | Adds annual-aggregate operational variables | Single-cluster relaxation per year |
+| `k`-aggregate | Adds `k`-cluster operational variables | k-clustered relaxation per year |
 
 ---
 
